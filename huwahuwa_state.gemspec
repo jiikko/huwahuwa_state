@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = HuwahuwaState::VERSION
   spec.authors       = ["jiikko"]
   spec.email         = ["n905i.1214@gmail.com"]
-  spec.summary       = %q{lODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = "https://github.com/jiikko/huwa_huwa_state"
+  spec.summary       = %q{State machines for Ruby.}
+  spec.description   = %q{State machines for Ruby.}
+  spec.homepage      = "https://github.com/jiikko/huwahuwa_state"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
