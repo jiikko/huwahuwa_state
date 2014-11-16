@@ -22,8 +22,8 @@ module HuwahuwaState
       end
     end
 
-    def update_state!(state_name, options: [])
-      raise(NotAcceptedUpdate) unless send("can_#{state_name}?", and_options: options)
+    def update_state!(state_name, and_options: [])
+      raise(NotAcceptedUpdate) unless send("can_#{state_name}?", and_options: and_options)
       self.class.class_variable_get("@@_block_#{state_name}").call(self)
     end
   end

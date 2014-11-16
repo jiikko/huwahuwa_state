@@ -6,7 +6,7 @@ class Issue < ActiveRecord::Base
     record.working!
   end
 
-  hh_state :finished, from: [:resolved], options: [:manger] do |record|
+  hh_state :finished, from: [:resolved], options: [:manager] do |record|
     record.finished!
   end
 end

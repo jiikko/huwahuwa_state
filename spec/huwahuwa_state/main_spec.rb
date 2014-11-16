@@ -25,7 +25,27 @@ describe HuwahuwaState::Main do
   end
 
   context 'optionsに値が設定されている時' do
-    it '' do
+    context '正しい遷移する時' do
+      it 'untouchedからworkingへ遷移すること' do
+        issue = Issue.create(state: Issue.states["untouched"])
+        issue.update_state!(:working, and_options: [:worker])
+        expect(issue.state).to eq('working')
+      end
+
+      it 'resolvedからfinishedになること' do
+        issue = Issue.create(state: Issue.states["resolved"])
+        issue.update_state!(:finished, and_options: [:manager])
+        expect(issue.state).to eq('finished')
+      end
+    end
+
+    context '想定していない遷移をする時' do
+      it "catch exception" do
+        issue = Issue.create(state: Issue.states["untouched"])
+        expect {
+          issue.update_state!(:working, and_options: [:other_user])
+        }.to raise_error(HuwahuwaState::NotAcceptedUpdate)
+      end
     end
   end
 end
