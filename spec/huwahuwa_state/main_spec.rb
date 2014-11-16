@@ -23,4 +23,9 @@ describe HuwahuwaState::Main do
       }.to raise_error(HuwahuwaState::NotAcceptedUpdate)
     end
   end
+
+  context 'optionsに値が設定されている時' do
+    it '' do
+    end
+  end
 end
