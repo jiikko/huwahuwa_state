@@ -5,11 +5,13 @@ module HuwahuwaState
     extend ActiveSupport::Concern
 
     included do
-      def self.huwahuwa_state(column_name: nil)
-        @@column_name = column_name || :name
-      end
+      def self.huwahuwa_state(state_name = nil, column_name: nil, from: nil, options: [], &block)
+        if state_name.nil?
+          @@column_name = column_name || :name
+          return
+        end
 
-      def self.hh_state(state_name, from: , options: [], &block)
+        raise(ArgumentError, 'missing keyword: from') if from.nil?
         define_method "can_#{state_name}?" do |and_options: []| # can_hoge?が定義される
           valid_optionsed = true
           if options.present?
