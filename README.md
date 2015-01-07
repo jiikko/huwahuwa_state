@@ -1,6 +1,5 @@
-# HuwahuwaState
-
-TODO: Write a gem description
+# HuwahuwaState - Ruby simple state machines
+using ActiveRecord::Enum.
 
 ## Installation
 
@@ -12,13 +11,36 @@ And then execute:
 
     $ bundle
 
-Or install it yourself as:
+## ActiveRecord Quick start
+```ruby
+class User < ActiveRecord::Base
+  enum state: [:state_active, :state_freeze, :state_rock, :state_pending]
+  huwahuwa_state column_name: :state
+  
+  hh_state :state_active, from: [:state_pending, :state_freeze, :state_pending] do |record|
+    # something
+    record.state_active!
+    # something
+  end
 
-    $ gem install huwahuwa_state
+  hh_state :state_rock, from: [:state_active] do |record|
+    record.state_rock!
+  end
+end
+```
 
-## Usage
+```ruby
+# success
+user = User.create(state: User.states["state_pending"])
+user.update_state!(:state_active)
+user.can_state_active? # => true
+user.state # => 'state_active'
 
-TODO: Write usage instructions here
+# failure
+user = User.create(state: User.states["state_freeze"])
+user.can_state_rock? => false
+user.update_state!(:state_rock) # => HuwahuwaState::NotAcceptedUpdate
+```
 
 ## Contributing
 
