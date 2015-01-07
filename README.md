@@ -5,13 +5,17 @@ using ActiveRecord::Enum.
 
 Add this line to your application's Gemfile:
 
-    gem 'huwahuwa_state'
+    gem 'huwahuwa_state', github: 'jiikko/huwahuwa_state'
+
 
 And then execute:
 
     $ bundle
 
-## ActiveRecord Quick start
+## Requirements
+-  "activerecord", ">= 4.1"
+
+## Example
 ```ruby
 class User < ActiveRecord::Base
   enum state: [:state_active, :state_freeze, :state_rock, :state_pending]
