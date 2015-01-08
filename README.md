@@ -42,7 +42,7 @@ user.state # => 'state_active'
 
 # failure
 user = User.create(state: User.states["state_freeze"])
-user.can_state_rock? => false
+user.can_state_rock? # => false
 user.update_state!(:state_rock) # => HuwahuwaState::NotAcceptedUpdate
 ```
 
