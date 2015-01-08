@@ -21,13 +21,13 @@ class User < ActiveRecord::Base
   enum state: [:state_active, :state_freeze, :state_rock, :state_pending]
   huwahuwa_state column_name: :state
   
-  hh_state :state_active, from: [:state_pending, :state_freeze, :state_pending] do |record|
+  huwahuwa_state :state_active, from: [:state_pending, :state_freeze, :state_pending] do |record|
     # something
     record.state_active!
     # something
   end
 
-  hh_state :state_rock, from: [:state_active] do |record|
+  huwahuwa_state :state_rock, from: [:state_active] do |record|
     record.state_rock!
   end
 end
