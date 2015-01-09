@@ -1,4 +1,7 @@
+
 # HuwahuwaState - Ruby simple state machines
+[![Build Status](https://travis-ci.org/jiikko/huwahuwa_state.svg?branch=master)](https://travis-ci.org/jiikko/huwahuwa_state)
+
 using ActiveRecord::Enum.
 
 ## Installation
