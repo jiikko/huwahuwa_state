@@ -8,7 +8,7 @@ using ActiveRecord::Enum.
 
 Add this line to your application's Gemfile:
 
-    gem 'huwahuwa_state', github: 'jiikko/huwahuwa_state'
+    gem 'huwahuwa_state'
 
 
 And then execute:
