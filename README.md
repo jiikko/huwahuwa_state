@@ -39,8 +39,8 @@ end
 ```ruby
 # success
 user = User.create(state: User.states["state_pending"])
-user.update_state!(:state_active)
 user.can_state_active? # => true
+user.update_state!(:state_active)
 user.state # => 'state_active'
 
 # failure
